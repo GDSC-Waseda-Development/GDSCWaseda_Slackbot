@@ -3,8 +3,7 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 import os
 from dotenv import load_dotenv
 import re
-from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Request
+from google_doc import add_name
 
 channel_ids = {"backend":"C02HKKFAH8B","frontend":"whoknows"}
 
@@ -46,6 +45,7 @@ def mention_handler(event, say):
         if 'check' in text:
             user_info = app.client.users_info(user=event["user"])
             user_name = user_info["user"]["profile"]["display_name"]
+            add_name(user_name,"1W59UxNVhs2XXlAH9ckWpkY35BQ-DG5qZGdnJuEEbOAY")
             say(f"Hi, Checked {user_name}")
 
 # Handler must be defined above this or it cannot be used
